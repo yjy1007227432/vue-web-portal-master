@@ -8,7 +8,7 @@
 					<a v-else href="javascript:void(0)">{{item.name}}</a>
 					<span></span>
 					<ul v-if="item.havesub" class="sub">
-						<li v-for="(sub,index) in item.sub"><router-link :to="'/index/catetory/'+sub.subLink">{{sub.subName}}</router-link></li>
+						<li v-for="(sub,index) in item.sub"><div @click="toExport(sub.subLink)">{{sub.subName}}</div></li>
 					</ul>
 				</li>
 				
@@ -31,7 +31,11 @@ export default{
 			}).catch(function(err){
 				console.log('请求导航数据出错');
 			})
-		}
+		},
+		toExport(id){
+                var url2 = "/static/download/"+id;
+                window.location.href = url2;
+        }
 	},
 	mounted : function(){
 		this.getNav();
@@ -40,7 +44,7 @@ export default{
 </script>
 <style scoped>
 	nav{width:740px;height:42px;position: absolute;bottom: 0;right: 0;}
-	nav ul>li{width:74px;float:left;text-align: center;line-height: 42px;position:relative;color:white;}
+	nav ul>li{width:123px;float:left;text-align: center;line-height: 42px;position:relative;color:white;}
 	nav ul>li a{font-family:'Microsoft Yahei';font-size:14px;display: inline-block;color:white;text-decoration:none;}
 	nav ul>li a:hover{text-decoration:none;}
 	nav ul>li a:link{color:white;}

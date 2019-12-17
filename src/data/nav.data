@@ -1,68 +1,28 @@
 [{
-	"link" : "zxzy",
-	"name" : "教学资源",
-	"havesub" : true,
-	"sub" : [{
-				"subName" : "教学资源1",
-				"subLink" : "jxzy1"
-			},{
-				"subName" : "教学资源2",
-				"subLink" : "jxzy2"
-			}]
-},{
-	"link" : "jxpt",
-	"name" : "教学平台",
+	"link" : "cpjs",
+	"name" : "产品介绍",
 	"havesub" : false
 },{
-	"link" : "zxgk",
-	"name" : "中心概况",
-	"havesub" : true,
-	"sub" : [{
-				"subName" : "中心概况1",
-				"subLink" : "zxgk1"
-			},{
-				"subName" : "中心概况2",
-				"subLink" : "zxgk2"
-			},{
-				"subName" : "中心概况3",
-				"subLink" : "zxgk3"
-			}]
-},{
-	"link" : "szdw",
-	"name" : "师资队伍",
-	"havsub" : false
-},{
-	"link" : "zygx",
-	"name" : "资源共享",
+	"link" : "zxdt",
+	"name" : "最新动态",
 	"havesub" : false
 },{
-	"link" : "sbhj",
-	"name" : "设备环境",
-	"havesub" : true,
-	"sub" : [{
-				"subName" : "设备环境1",
-				"subLink" : "sbhj1"
-			},{
-				"subName" : "设备环境2",
-				"subLink" : "sbhj2"
-			}]
-},{
-	"link" : "yxgl",
-	"name" : "运行管理",
+	"link" : "jjfa",
+	"name" : "解决方案",
 	"havesub" : false
 },{
-	"link" : "tscx",
-	"name" : "特色创新",
+	"link" : "rjxz",
+	"name" : "软件下载",
 	"havesub" : true,
 	"sub" : [{
-				"subName" : "特色创新1",
-				"subLink" : "tscx1"
+				"subName" : "易问",
+				"subLink" : "eAskwin20.exe"
 			},{
-				"subName" : "特色创新2",
-				"subLink" : "tscx2"
+				"subName" : "360",
+				"subLink" : "360rar.exe"
 			}]
 },{
-	"link" : "gzzd",
-	"name" : "规章制度",
+	"link" : "bzwd",
+	"name" : "帮助文档",
 	"havesub" : false
 }]
