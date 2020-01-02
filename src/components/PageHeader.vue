@@ -2,8 +2,8 @@
 	<div id="pageheader">
 		<header class="container">
 			<div class="backsite fr">
-				<a href="">首页</a>
-				<a href="">返回首页</a>
+				<a href="/index">首页</a>
+				<a href="/index">返回首页</a>
 			</div>
 			<pageNav></pageNav>
 	</header>

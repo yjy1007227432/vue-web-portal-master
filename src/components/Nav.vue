@@ -5,6 +5,7 @@
 				<li><router-link to="/index">首页</router-link><span></span></li>
 				<li v-for="(item,index) in navData">
 					<router-link v-if="!item.havesub" :to="'/index/catetory/'+item.link">{{item.name}}</router-link>
+					<!-- @click.native="refresh" -->
 					<a v-else href="javascript:void(0)">{{item.name}}</a>
 					<span></span>
 					<ul v-if="item.havesub" class="sub">
@@ -35,7 +36,10 @@ export default{
 		toExport(id){
                 var url2 = "/static/download/"+id;
                 window.location.href = url2;
-        }
+		},
+		refresh:function(){
+　　　　　　this.$router.go(0);  
+　　　　}
 	},
 	mounted : function(){
 		this.getNav();

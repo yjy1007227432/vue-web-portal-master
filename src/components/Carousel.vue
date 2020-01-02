@@ -2,6 +2,7 @@
 	<div>
 	    <el-carousel height="320px">
 			<el-carousel-item v-for="(item, index) in articleData" :key="item.moduleId">
+				<!-- :key="item.moduleId" -->
 				<img :src="item.pic" alt="">
 	      	</el-carousel-item>
 	    </el-carousel>

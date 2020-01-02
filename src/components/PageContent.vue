@@ -10,11 +10,11 @@
 						<h3>产品介绍</h3>
 					</div>
 					<div class="more">
-						<a href="/index/catetory/cpjs">MORE+</a>
+						<a href="/index/catetory/product">MORE+</a>
 					</div>
 				</div>
 				<div class="main">
-					<div class="focusBox2">
+					<!-- <div class="focusBox2">
 						<ul class="pic">
 							<li v-for="index in 6">
 								<a href="">
@@ -29,8 +29,8 @@
 								<span></span>
 							</li>
 						</ul>
-					</div>
-					<div class="news">
+					</div> -->
+					<!-- <div class="news">
 						<div class="sec_title">
 							<h4>{{tzgg[0] && tzgg[0].title}}</h4>
 						</div>
@@ -40,12 +40,13 @@
 									<a href="/index/catetory/aaa/article/bbb">详情</a>】</span>
 							</p>
 						</div>
-					</div>
+					</div> -->
 					<div class="news_list">
 						<ul>
-							<li v-for="(item,index) in tzgg" v-if="index > 0 && index < 7">&gt;
-								<a :href="`/index/catetory/${item.catetoryId}/article/${item.articleId}`">{{item.title}}</a>
-								<span>[{{item.publicTime | normalTime}}]</span>
+							<li v-for="(item,index) in productlist" v-if="index >= 0 && index <= 5">
+								<i class="el-icon-share"></i>
+								<a :href="`/index/catetory/product/article/${item.id}`">{{item.name}}</a>
+								<!-- <span>[{{item.publicTime | normalTime}}]</span> -->
 							</li>
 						</ul>
 					</div>
@@ -59,7 +60,7 @@
 				</div>
 				<div class="login-info">
 					<div class="doc">
-						<a class="docbtn fl" href="#">
+						<a class="docbtn fl" @click="dialogFormVisible = true">
 							<div class="A"></div>
 							<h4>新增需求</h4>
 						</a>
@@ -72,7 +73,7 @@
 						<form action="login" name="loginForm" id="loginForm" role="form">
 							<label for="userName">用户账户</label>
 							<div class="inputuser">
-								<input type="text" id="userName" name="account" placeholder="请输入手机号"></br>
+								<input t ype="text" id="userName" name="account" placeholder="请输入手机号"></br>
 							</div>
 							<label for="userPassword">输入密码</label>
 							<div class="inputpwd">
@@ -99,6 +100,32 @@
 				</div>
 			</div>
 		</div>
+
+		<el-dialog title="新增需求" :visible.sync="dialogFormVisible" width="30%" center>
+			<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+				<el-form-item label="客户名称" :label-width="formLabelWidth" prop="name">
+					<!-- <el-input v-model="form.name" autocomplete="off"></el-input> -->
+					<el-autocomplete v-model="ruleForm.name" :fetch-suggestions="querySearch" placeholder="请输入客户名称" @select="handleSelect"></el-autocomplete>
+				</el-form-item>
+				<el-form-item label="联系人" :label-width="formLabelWidth" prop="contact">
+					<el-input v-model="ruleForm.contact" auto-complete="off" placeholder="请输入联系人姓名"></el-input>
+				</el-form-item>
+				<el-form-item label="联系电话" :label-width="formLabelWidth" prop="contactPhone">
+					<el-input v-model="ruleForm.contactPhone" auto-complete="off" placeholder="请输入联系电话"></el-input>
+				</el-form-item>
+				<el-form-item label="联系邮箱" :label-width="formLabelWidth" prop="contactMail">
+					<el-input v-model="ruleForm.contactMail" auto-complete="off" placeholder="请输入联系邮箱"></el-input>
+				</el-form-item>
+				<el-form-item label="需求说明" :label-width="formLabelWidth" prop="content">
+					<el-input type="textarea" v-model="ruleForm.content" placeholder="请输入具体需求说明"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button type="primary" @click="submitForm('ruleForm')">确 定</el-button>
+				<el-button @click="resetForm('ruleForm')">重 置</el-button>
+				<el-button @click="dialogFormVisible = false">取 消</el-button>
+			</div>
+		</el-dialog>
 		<div class="contentC container">
 			<div class="left fl">
 				<div class="title">
@@ -106,31 +133,35 @@
 						<h3>最新动态</h3>
 					</div>
 					<div class="more">
-						<a href="/index/catetory/zxdt">MORE+</a>
+						<a href="/index/catetory/news">MORE+</a>
 					</div>
 				</div>
 				<div class="main">
-					<div class="pic fl">
+					<!-- <div class="pic fl">
 						<a href="">
 							<img src="/static/img/pic.png">
 						</a>
 
-					</div>
+					</div> -->
 					<div class="txt fr">
 						<p>
-							首都经济贸易大学（Capital University of Economics and Business）简称“首都经贸”
+							随着杭州打造“数字经济第一城”的工作逐步展开，伴随“最多跑一次”、“城市大脑”等各类业务系统的不断扩建与大数据开发应用的不断深入，需要现有的基础资源具有扩容及能力升级，包括对现有平台资源容量的扩容、大数据工具及产品的升级和网络的扩容升级等。
 						</p>
 						<p>
-							截止2015年4月，学校共设21个教学单位，41个本科专业；学校在籍学生18664人，其中本科生9764人，硕士研究生2613人，博士研究生293人；
-							<span class="xiangqing fr">【
-								<a href="#">详情</a>】</span>
+							基础资源能力：目前政务云已经达到13000核，30T内存的规模，储存超过1500T
+						</p>
+							<p>
+							数据分析能力：平台进一步提供PAAS层的能力，已经提供ODPS、ADS、DRDS、EDAS、MQ、DATAMALL等服务，为城市数据大脑提供大数据分析能力。
+						</p>
+							<p>
+							数据服务能力：通过电信自有数据的运营，以及电信体系公司的开发能力，政务大数据提供数据服务能力。
 						</p>
 					</div>
 					<div class="news_list">
 						<ul>
-							<li v-for="(item,index) in tzgg" v-if="index > 0 && index < 7">&gt;
-								<a :href="`/index/catetory/${item.catetoryId}/article/${item.articleId}`">{{item.title}}</a>
-								<span>[{{item.publicTime | normalTime}}]</span>
+							<li v-for="(item,index) in newslist" v-if="index >= 0 && index <= 5">&gt;
+								<a :href="`/index/catetory/news/article/${item.id}`">{{item.title}}</a>
+								<span>[{{item.createTime}}]</span>
 							</li>
 						</ul>
 					</div>
@@ -142,11 +173,18 @@
 						<h3>解决方案</h3>
 					</div>
 					<div class="more">
-						<a href="/index/catetory/jjfa">MORE+</a>
+						<a href="/index/catetory/solution">MORE+</a>
 					</div>
 				</div>
-				<div class="videoparent">
-					<div id="videoPlayer"></div>
+				<div class="main">
+					<div class="news_list2">
+						<ul>
+							<li v-for="(item,index) in solutionlist" v-if="index >= 0 && index <= 7">&gt;
+								<a :href="`/index/catetory/solution/article/${item.id}`">{{item.name}}</a>
+								<span>[{{item.createTime}}]</span>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -195,52 +233,267 @@
 </template>
 <script>
 	import Carousel from './Carousel.vue'
+	import 'whatwg-fetch'
+	import {
+		url
+	} from '../config'
+	var qs = require('qs');
 
 	export default {
 		data: function () {
+			var checkPhone = (rule, value, callback) => {
+				const phoneReg = /^1[3|4|5|6|7|8][0-9]{9}$/
+				if (!value) {
+					return callback(new Error('电话号码不能为空'))
+				}
+				setTimeout(() => {
+
+					if (!Number.isInteger(+value)) {
+						callback(new Error('请输入数字值'))
+					} else {
+						if (phoneReg.test(value)) {
+							callback()
+						} else {
+							callback(new Error('电话号码格式不正确'))
+						}
+					}
+				}, 100)
+			};
 			return {
-				tzgg: []
+				tzgg: [],
+				customerlist: [],
+				productlist:[],
+				newslist:[],
+				solutionlist:[],
+				restaurants:[],
+				dialogFormVisible: false,
+				ruleForm: {
+					name: '',
+					contact: '',
+					contactPhone: '',
+					contactMail: '',
+					content: '',
+					customerId:'',
+					feedback:''
+				},
+				rules: {
+					name: [{
+						required: true,
+						message: '请输入客户名称',
+						trigger: 'change'
+					}],
+					contact: [{
+						required: true,
+						message: '请输入联系人姓名',
+						trigger: 'blur'
+					}],
+					contactPhone: [{
+						validator: checkPhone,
+						required: true,
+						trigger: 'blur'
+					}],
+					contactMail: [{
+						type: 'email',
+						required: true,
+						message: '请输入正确的邮箱',
+						trigger: 'blur'
+					}],
+					content: [{
+						required: true,
+						message: '请填写具体需求',
+						trigger: 'blur'
+					}]
+				},
+				formLabelWidth: '120px'
 			}
 		},
 		methods: {
-			getTZGG: function () {
-				var _this = this;
-				this.$http.get('/src/data/catetory.data').then(function (res) {
-					_this.tzgg = res.data;
-				}).catch(function (err) {
-					console.log('获取通知公告数据出错');
-				})
+			// getTZGG: function () {
+				
+			// 	var _this = this;
+			// 	this.$http.get('/src/data/catetory.data').then(function (res) {
+			// 		_this.tzgg = res.data;
+			// 	}).catch(function (err) {
+			// 		console.log('获取通知公告数据出错');
+			// 	})
+			// },
+			getproduct() {
+				let that = this;
+				fetch('http://' + url + '/product/list')
+					.then(function (response) {
+						return response.json()
+					}).then(function (json) {
+						that.productlist = json
+						console.log("productlist", that.productlist);
+					}).catch(function (ex) {
+						console.log('parsing failed', ex)
+					})
+			},
+			getnews() {
+				let that = this;
+				fetch('http://' + url + '/news/list')
+					.then(function (response) {
+						return response.json()
+					}).then(function (json) {
+						that.newslist = json
+						console.log("newslist", that.newslist);
+					}).catch(function (ex) {
+						console.log('parsing failed', ex)
+					})
+			},
+			getsolution() {
+				let that = this;
+				fetch('http://' + url + '/solution/list')
+					.then(function (response) {
+						return response.json()
+					}).then(function (json) {
+						that.solutionlist = json
+						console.log("solutionlist", that.solutionlist);
+					}).catch(function (ex) {
+						console.log('parsing failed', ex)
+					})
+			},
+			submitForm(formName) {
+                let self = this;
+				console.log(this.ruleForm);
+				console.log(`http://`+url+`/order/add?${qs.stringify(this.ruleForm)}`);
+                fetch(`http://`+url+`/order/add?${qs.stringify(this.ruleForm)}`)
+                    .then(function (response) {
+                        return response.json()
+                    }).then(function (json) {
+                        console.log('parsed json', json)
+                        if (json.success == false) {
+                            alert("需求重复")
+                        } else if (json.success == true) {
+                            self.pushQuestions(json.data)
+                        }
+
+                    }).catch(function (ex) {
+                        console.log('parsing failed', ex)
+                    });
+				this.$refs[formName].validate((valid) => {
+					if (valid) {
+						alert('submit!');
+						this.dialogFormVisible = false;
+					} else {
+						console.log('error submit!!');
+						return false;
+					}
+				});
+			},
+			resetForm(formName) {
+				this.$refs[formName].resetFields();
+			},
+			querySearch(queryString, cb) {
+				this.restaurants=this.customerlist;
+				this.restaurants.forEach(item => {
+                    item.value = item.name
+                });
+				console.log("restaurants", this.restaurants);
+				var restaurants = this.restaurants;
+				var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+				// 调用 callback 返回建议列表的数据
+				cb(results);
+			},
+			createFilter(queryString) {
+				return (restaurant) => {
+					return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+				};
+			},
+			loadAll() {
+				let that = this;
+				fetch('http://' + url + '/customer/selectIdAndName')
+					.then(function (response) {
+						return response.json()
+					}).then(function (json) {
+						//console.log('json', json.question)
+						// return
+						//if (json.code == 200) {
+						/*let arrlist = [],
+						    questionList = json.question,
+						    answer = json.answer;
+						for (let i = 0; i < question.length; i++) {
+						    let id = question[i].id,
+						        dARR = [];
+						    for (let j = 0; j < answer.length; j++) {
+						        if (id == answer[j].questionID) {
+						            dARR.push(answer[j])
+						        }
+						    }
+						    question[i].answerList = dARR;
+						}*/
+						that.customerlist = json
+						console.log("customerlist", that.customerlist);
+						//} else {
+						//   alert("failure")
+						//}
+					}).catch(function (ex) {
+						console.log('parsing failed', ex)
+					})
+				// console.log("eee", this.customerlist);
+				// return this.customerlist;
+				// return [{
+				// 		"value": "南京数龙计算机科技有限公司",
+				// 		"id": "1"
+				// 	},
+				// 	{
+				// 		"value": "杭州市林业水利局",
+				// 		"id": "2"
+				// 	},
+				// 	{
+				// 		"value": "浙江省电信有限公司",
+				// 		"id": "3"
+				// 	},
+				// 	{
+				// 		"value": "市总工会",
+				// 		"id": "4"
+				// 	},
+				// ];
+			},
+			handleSelect(item) {
+				console.log(item);
+				this.ruleForm.customerId=item.id;
 			}
 		},
-		created: function () {
-			this.getTZGG();
-		},
+		// created: function () {
+		// 	this.getTZGG();
+		// },
 		components: {
 			carousel: Carousel
 		},
-		mounted: function () {
-			//增加jquery的操作,只有在updated之后，也才能使用jquery对样式绑定事件
-			$(".cop").hover(function () {
-				$(this).find("span").stop().animate({
-					bottom: "0"
-				}, 150)
-			}, function () {
-				$(this).find("span").stop().animate({
-					bottom: "-40px"
-				}, 150)
-			});
-			$(".focusBox2").slide({
-				titCell: ".num li",
-				mainCell: ".pic",
-				effect: "fold",
-				autoPlay: true,
-				trigger: "click",
-				interTime: 4000,
-			});
-		}
+		mounted() {
+			this.loadAll();
+			this.getproduct();
+			this.getnews();
+			this.getsolution();
+		},
+		// mounted: function () {
+		// 	//增加jquery的操作,只有在updated之后，也才能使用jquery对样式绑定事件
+		// 	$(".cop").hover(function () {
+		// 		$(this).find("span").stop().animate({
+		// 			bottom: "0"
+		// 		}, 150)
+		// 	}, function () {
+		// 		$(this).find("span").stop().animate({
+		// 			bottom: "-40px"
+		// 		}, 150)
+		// 	});
+		// 	$(".focusBox2").slide({
+		// 		titCell: ".num li",
+		// 		mainCell: ".pic",
+		// 		effect: "fold",
+		// 		autoPlay: true,
+		// 		trigger: "click",
+		// 		interTime: 4000,
+		// 	});
+		// }
 	};
 </script>
 <style scoped>
+	.el-autocomplete {
+		width: 100%
+	}
+
 	.contentA {
 		width: 1200px;
 		height: 320px;
@@ -367,17 +620,17 @@
 
 	.contentB {
 		width: 1200px;
-		height: 350px;
+		height: 200px;
 		margin-top: 30px;
 	}
 
 	.contentB .left {
 		width: 825px;
-		height: 350px;
+		height: 200px;
 	}
 
 	.contentB .left .main {
-		height: 290px;
+		height: 140px;
 		margin-top: 20px;
 	}
 
@@ -526,15 +779,50 @@
 		float: right;
 		*margin-top: -34px;
 	}
+	.news_list2 {
+		margin-top: 10px;
+		float: left;
+		width: 100%;
+		height: 95px;
+	}
+
+	.news_list2 ul {
+		font-size: 15px;
+		border-top: 1px solid #ddd;
+	}
+
+	.news_list2 ul li {
+		margin-right: 10px;
+		height: 32px;
+		line-height: 32px;
+		float: left;
+		width: 110%;
+		border-bottom: 1px dotted #666;
+	}
+
+	.news_list2 ul li a {
+		margin-left: 13px;
+		font-family: "宋体";
+	}
+
+	.news_list2 ul li:hover a {
+		color: #B80C00;
+		text-decoration: none;
+	}
+
+	.news_list2 ul li span {
+		float: right;
+		*margin-top: -34px;
+	}
 
 	.contentB .right {
 		width: 346px;
-		height: 350px;
+		height: 200px;
 	}
 
 	.contentB .right .login-info {
 		width: 345px;
-		height: 280px;
+		height: 130px;
 		/* border: 1px solid #ccc; */
 		border-radius: 8px;
 		margin-top: 20px;
@@ -644,7 +932,7 @@
 
 	.contentC {
 		width: 1200px;
-		height: 290px;
+		height: 340px;
 		margin-top: 30px;
 	}
 
@@ -692,6 +980,7 @@
 		height: 46px;
 		margin: 5px 0;
 	}
+
 	.doc .docbtn .A {
 		background: url(/static/img/icon_shenbao_hui.png)
 	}
@@ -699,6 +988,7 @@
 	.doc .docbtn:hover .A {
 		background: url(/static/img/icon_shenbao_red.png)
 	}
+
 	.doc .docbtn .B {
 		background: url(/static/img/icon_zhicheng_hui.png)
 	}
@@ -710,8 +1000,8 @@
 
 
 	.contentC .left .main .txt {
-		width: 415px;
-		height: 160px;
+		width: 815px;
+		height: 210px;
 	}
 
 	.contentC .left .main .txt p {

@@ -1,17 +1,17 @@
 [{
-	"link" : "cpjs",
+	"link" : "product",
 	"name" : "产品介绍",
 	"havesub" : false
 },{
-	"link" : "zxdt",
+	"link" : "news",
 	"name" : "最新动态",
 	"havesub" : false
 },{
-	"link" : "jjfa",
+	"link" : "solution",
 	"name" : "解决方案",
 	"havesub" : false
 },{
-	"link" : "rjxz",
+	"link" : "download",
 	"name" : "软件下载",
 	"havesub" : true,
 	"sub" : [{
@@ -22,7 +22,7 @@
 				"subLink" : "360rar.exe"
 			}]
 },{
-	"link" : "bzwd",
+	"link" : "help",
 	"name" : "帮助文档",
 	"havesub" : false
 }]
